@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The select Element</h2>
+
+<p>The select element defines a drop-down list:</p>
+
+<form action="/nbastats" method=" GET">
+
+  <label for="statics">Statics to Display:</label>
+  <select id="statics" name="statics">
+    {% for s in options_[0] %}
+      {% if s==stat %}
+        <option selected="selected" value="{{s}}"> {{s}} </option>
+      {% else %}
+        <option value="{{s}}"> {{s}} </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  <label for="limit">Limit:</label>
+  <select id="limit" name="limit">
+    {% for l in options_[1] %}
+      {% if l==lim %}
+        <option selected="selected" value="{{l}}"> {{l}} </option>
+      {% else %}
+        <option value="{{l}}"> {{l}} </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  <label for="arrange">Arrange:</label>
+  <select id="arrange" name="arrange">
+    {% for a in options_[2] %}
+      {% if a==arr %}
+        <option selected="selected" value="{{a}}"> {{a}} </option>
+      {% else %}
+        <option value="{{a}}"> {{a}} </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  <input type="submit">
+</form>
+
+<img src="/static/saved_figure.png" alt="Girl in a jacket" width="500" height="600">
+
+
+</body>
+</html>
