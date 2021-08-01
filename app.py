@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
+from random import randint
 from flask import Flask, render_template, request, redirect
 
 # functions
@@ -20,9 +21,9 @@ def get_bool_from_drop(drop):
     """
     Consider (or not) zero values in DF
     """
-    if drop=="Exclude zeros":
+    if drop=="Remove zeros":
         return True
-    elif drop=="Do not exclude zeros":
+    elif drop=="Do not remove zeros":
         return False
 
 def get_df_stat(text_stat):
@@ -49,7 +50,7 @@ async def generate_graph_image(stat, sort, limit, drop_zeros):
 
     # NOTE Get the figure, considering the parameters of this function
     df_sorted = df_nba_.sort_values(stat_selected, ascending=get_sort(sort))[:int(limit)]
-    ax = df_sorted.plot.bar(x='FULL NAME', y=stat_selected, rot=90)
+    ax = df_sorted.plot.bar(x='FULL NAME', y=stat_selected, rot=90, color="#8ad900")
 
     # NOTE Saved graph figure in "figure_path" folder
     plt.savefig(figure_path, bbox_inches='tight', dpi=200)
@@ -92,7 +93,7 @@ figure_path = os.path.join(os.getcwd(),"..", "static", 'saved_figure.png')
 with open(csv_path, "r") as csv_file:
     df_nba = pd.read_csv(csv_file)
 
-drop = ["Exclude zeros", "Do not exlude zeros"]
+drop = ["Remove zeros", "Do not remove zeros"]
 stats = ["Points per Game", "Assists per Game", "Rebounds per Game", \
         "Steals per Game", "Minutes per Game"]
 lim = ["5","10","15","20","25"]
@@ -103,7 +104,7 @@ arrange= ["Ascending", "Descending"]
 app = Flask(__name__)
 
 @app.route('/')
-async def hello_world():
+def hello_world():
     return redirect("/nbastats")
 
 @app.route('/nbastats', methods=['GET'])
@@ -120,5 +121,3 @@ async def stats_function():
 if __name__ == '__main__':
     app.run()   
 
-# export FLASK_APP=app.py
-# python -m flask run

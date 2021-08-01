@@ -1,62 +1,95 @@
 <!DOCTYPE html>
 <html>
+
+  <head>
+    <title>NBA web app</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+
 <body>
 
-<h2>The select Element</h2>
-
-<p>The select element defines a drop-down list:</p>
+&nbsp;&nbsp;&nbsp;
 
 <form action="/nbastats" method=" GET">
 
-  <label for="statics">Statics to Display:</label>
-  <select id="statics" name="statics">
-    {% for s in options_[0] %}
-      {% if s==stat %}
-        <option selected="selected" value="{{s}}"> {{s}} </option>
-      {% else %}
-        <option value="{{s}}"> {{s}} </option>
-      {% endif %}
-    {% endfor %}
-  </select>
+  <table>
+    <tr>
+      <th>Static to Display</th>
+      <th>Limit</th>
+      <th>Arrange</th>
+      <th>Drop Zeros</th>
+    </tr>
+    <tr>
+      <td>
+        
+        <label for="statics"></label>
+        <select id="statics" name="statics">
+          {% for s in options_[0] %}
+            {% if s==stat %}
+              <option selected="selected" value="{{s}}"> {{s}} </option>
+            {% else %}
+              <option value="{{s}}"> {{s}} </option>
+            {% endif %}
+          {% endfor %}
+        </select>
 
-  <label for="limit">Limit:</label>
-  <select id="limit" name="limit">
-    {% for l in options_[1] %}
-      {% if l==lim %}
-        <option selected="selected" value="{{l}}"> {{l}} </option>
-      {% else %}
-        <option value="{{l}}"> {{l}} </option>
-      {% endif %}
-    {% endfor %}
-  </select>
+      </td>
 
-  <label for="arrange">Arrange:</label>
-  <select id="arrange" name="arrange">
-    {% for a in options_[2] %}
-      {% if a==arr %}
-        <option selected="selected" value="{{a}}"> {{a}} </option>
-      {% else %}
-        <option value="{{a}}"> {{a}} </option>
-      {% endif %}
-    {% endfor %}
-  </select>
+      <td>
+        
+        <label for="limit"></label>
+        <select id="limit" name="limit">
+          {% for l in options_[1] %}
+            {% if l==lim %}
+              <option selected="selected" value="{{l}}"> {{l}} </option>
+            {% else %}
+              <option value="{{l}}"> {{l}} </option>
+            {% endif %}
+          {% endfor %}
+        </select>
 
-  <label for="drop">Drop zeros:</label>
-  <select id="drop" name="drop">
-    {% for d in options_[3] %}
-      {% if d==drp %}
-        <option selected="selected" value="{{d}}"> {{d}} </option>
-      {% else %}
-        <option value="{{d}}"> {{d}} </option>
-      {% endif %}
-    {% endfor %}
-  </select>
+      </td>
 
-  <input type="submit">
+      <td>
+
+        <label for="arrange"></label>
+        <select id="arrange" name="arrange">
+          {% for a in options_[2] %}
+            {% if a==arr %}
+              <option selected="selected" value="{{a}}"> {{a}} </option>
+            {% else %}
+              <option value="{{a}}"> {{a}} </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+      </td>
+
+      <td>
+
+        <label for="drop"></label>
+        <select id="drop" name="drop">
+          {% for d in options_[3] %}
+            {% if d==drp %}
+              <option selected="selected" value="{{d}}"> {{d}} </option>
+            {% else %}
+              <option value="{{d}}"> {{d}} </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
+  </table>
+
+  <input type="submit" value="Get Graph!">
 </form>
 
-<img src="/static/saved_figure.png" alt="Graph" width="500" height="600">
+&nbsp;
 
+
+<img src="/static/saved_figure.png" class="center" alt="Graph" width="500" height="600">
+
+&nbsp;&nbsp;&nbsp;
 
 </body>
 </html>
