@@ -41,10 +41,21 @@
     {% endfor %}
   </select>
 
+  <label for="drop">Drop zeros:</label>
+  <select id="drop" name="drop">
+    {% for d in options_[3] %}
+      {% if d==drp %}
+        <option selected="selected" value="{{d}}"> {{d}} </option>
+      {% else %}
+        <option value="{{d}}"> {{d}} </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
   <input type="submit">
 </form>
 
-<img src="/static/saved_figure.png" alt="Girl in a jacket" width="500" height="600">
+<img src="/static/saved_figure.png" alt="Graph" width="500" height="600">
 
 
 </body>
