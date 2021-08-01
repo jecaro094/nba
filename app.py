@@ -91,7 +91,7 @@ def get_options(default_options=False):
 # NOTE Define a DF and options to be displayed in HTML page
 
 csv_path = os.path.join(os.getcwd(), "NBA2021.csv")
-figure_path = os.path.join(os.getcwd(),"..", "static", 'saved_figure.png')
+figure_path = os.path.join(os.getcwd(), "static", 'saved_figure.png')
 with open(csv_path, "r") as csv_file:
     df_nba = pd.read_csv(csv_file)
 
