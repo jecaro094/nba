@@ -9,9 +9,7 @@ body {
     background:#c0ea77;
     font: normal 20px Verdana, Arial, sans-serif;
   }
-  h1 {
-    margin: 0 0 0.25em;
-  }
+
   /* Reset Select */
   select {
     -webkit-appearance: none;
@@ -25,10 +23,8 @@ body {
     background-image: none;
     font: normal 20px Verdana, Arial, sans-serif;
   }
-  /* Remove IE arrow */
-  select::-ms-expand {
-    display: none;
-  }
+ 
+  
   /* Custom Select */
   .select {
     position: relative;
@@ -53,6 +49,7 @@ body {
 
   table {
     width: 100%;
+    margin-top: 170px;
   }
   
 
@@ -71,22 +68,5 @@ body {
 
     color: #fff;
   }
-  /* Arrow */
-  .select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: #34495e;
-    cursor: pointer;
-    pointer-events: none;
-    -webkit-transition: .25s all ease;
-    -o-transition: .25s all ease;
-    transition: .25s all ease;
-  }
-  /* Transition */
-  .select:hover::after {
-    color: #f39c12;
-  }
+
   

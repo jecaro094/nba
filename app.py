@@ -1,8 +1,12 @@
 # imports
-import pandas as pd
-import matplotlib.pyplot as plt
+
 import os
 
+import urllib.parse as urlparse
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from urllib.parse import parse_qs
 from random import randint
 from flask import Flask, render_template, request, redirect
 
@@ -44,9 +48,9 @@ async def generate_graph_image(stat, sort, limit, drop_zeros):
     df_nba_ = df_nba.copy()
     
     # NOTE Exclude zero values from a copy of the original DF, for the stat considered
-    for index, row in df_nba_.iterrows():
-        if not (row[stat_selected]) and get_bool_from_drop(drop_zeros):
-            df_nba_ = df_nba_.drop([index])
+    if get_bool_from_drop(drop_zeros):
+        indexes = df_nba_.index[df_nba_[stat_selected]==0].to_list()
+        df_nba_ = df_nba_.drop(indexes)
 
     # NOTE Get the figure, considering the parameters of this function
     df_sorted = df_nba_.sort_values(stat_selected, ascending=get_sort(sort))[:int(limit)]
@@ -64,8 +68,6 @@ def get_param(url, param):
     Returns the value of the specified parameter
     from a URL string
     """
-    import urllib.parse as urlparse
-    from urllib.parse import parse_qs
     parsed = urlparse.urlparse(url)
     return (parse_qs(parsed.query)[param])[0]
 
