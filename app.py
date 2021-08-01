@@ -54,10 +54,10 @@ async def generate_graph_image(stat, sort, limit, drop_zeros):
 
     # NOTE Get the figure, considering the parameters of this function
     df_sorted = df_nba_.sort_values(stat_selected, ascending=get_sort(sort))[:int(limit)]
-    ax = df_sorted.plot.bar(x='FULL NAME', y=stat_selected, rot=90, color="#8ad900")
+    ax = df_sorted.plot.bar(x='FULL NAME', y=stat_selected, rot=90, color="#8ad900", figsize=(6, 6))
 
     # NOTE Saved graph figure in "figure_path" folder
-    plt.savefig(figure_path, bbox_inches='tight', dpi=200)
+    plt.savefig(figure_path, bbox_inches='tight')
 
     # NOTE Close open figure
     plt.close('all')
