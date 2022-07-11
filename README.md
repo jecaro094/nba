@@ -7,4 +7,4 @@
     - http://localhost:5000/nbastats
 - Added an additional feature: __*Drop zeros*__ option, if you want to ignore players with values equal to 0 in the graph shown. This happens sometimes with some of the available stats, only when we consider __*sort=ascending*__.
 - You can get the graph in the same page in which the options are available, clicking __*Get Graph!*__. The choosen options are stored in the page when you get the graph.
- 
+  
